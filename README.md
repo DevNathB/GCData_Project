@@ -98,7 +98,7 @@ sub_TSet <- select(TotalSet,contains("mean"),contains("std"),Activity,Subject)
 ```
 
 Examine the list obtained, and remove unwanted features. Since we are 
-only interested in the raw features, we may remove the ones that are derived from these.
+only interested in the raw features, we may remove the ones that are derived from these (ie. the angle features):
 
 
 ```r
@@ -226,7 +226,7 @@ levels(sub_TSet$Activity)
 
 ###Step 4:
 Appropriately label the data set with descriptive variable names:
-This was performed already in Step 1.
+This was performed already in Step 1 (The variable names V1, V2, etc were renamed to correspond to their descriptive names given in the file: UCI HAR Dataset/features.txt")
 
 ###Step 5:
 From the data set in Step 4, creates a second, independent tidy data 
@@ -273,4 +273,5 @@ Reading in Tidy Data set:
 
 ```r
 read_tidy <- read.table(file="TidyData.txt",header=TRUE, stringsAsFactors=TRUE)
+read_tidy$Subject <- as.factor(read_tidy$Subject)
 ```
